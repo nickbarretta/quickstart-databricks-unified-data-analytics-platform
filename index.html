@@ -893,6 +893,12 @@ collaborated with AWS on the content of the Quick Start.
 <div class="paragraph">
 <p>The Databricks Unified Analytics Platform follows industry standard best practices for securing cloud applications.</p>
 </div>
+<div id="networkflow" class="imageblock">
+<div class="content">
+<a class="image" href="images/network-flow.png"><img src="images/network-flow.png" alt="Network Flow" width="439" height="648"></a>
+</div>
+<div class="title">Figure 1. AWS Network Flow</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -918,12 +924,6 @@ collaborated with AWS on the content of the Quick Start.
 <p><strong>IP access limits for web application and REST API</strong> - Optionally limit access to the Databricks Web Application and the REST API by requiring specific IP addresses or ranges. For example, specify the IP addresses for the customer corporate intranet and VPN. This reduces risk from several types of attacks. This feature requires the Enterprise tier.</p>
 </li>
 </ul>
-</div>
-<div id="networkflow" class="imageblock">
-<div class="content">
-<a class="image" href="images/network-flow.png"><img src="images/network-flow.png" alt="Network Flow" width="439" height="648"></a>
-</div>
-<div class="title">Figure 1. AWS Network Flow</div>
 </div>
 </div>
 </div>
@@ -1041,9 +1041,6 @@ After you deploy the Quick Start, enable the <a href="https://docs.aws.amazon.co
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>You are responsible for the cost of the AWS services used while running this Quick Start reference deployment. There is no additional cost for using the Quick Start.</p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -1053,7 +1050,7 @@ After you deploy the Quick Start, enable the <a href="https://docs.aws.amazon.co
 <p>This Quick Start allows 2 deployment options to choose from - Databricks managed VPC and Customer managed VPC deployment.</p>
 </div>
 <div class="paragraph">
-<p>Following diagram shows all the components deployed by the Quick Start. Some resources may not be created depending upon the choosen deployment option.</p>
+<p>Following diagram shows all the components deployed by the Quick Start. Some resources will be created depending upon the chosen deployment option, when launching the CloudFormation template.</p>
 </div>
 <div id="architecture1" class="imageblock">
 <div class="content">
@@ -1073,10 +1070,10 @@ After you deploy the Quick Start, enable the <a href="https://docs.aws.amazon.co
 <p>A VPC configured with public subnets according to AWS best practices, to provide you with your own virtual network on AWS.**</p>
 </li>
 <li>
-<p>A unique cross-account service IAM role in your AWS account so that Databricks can deploy clusters in the appropriate VPC for the new workspace.</p>
+<p>A cross-account IAM role, so that Databricks can deploy clusters in the appropriate VPC for the new workspace.</p>
 </li>
 <li>
-<p>An S3 bucket in your account required to store objects like cluster logs, notebook revisions, and job results.</p>
+<p>An S3 bucket required to store objects like cluster logs, notebook revisions, and job results.</p>
 </li>
 <li>
 <p>A Databricks workspace.</p>
@@ -1085,7 +1082,7 @@ After you deploy the Quick Start, enable the <a href="https://docs.aws.amazon.co
 <p>A customer-managed AWS KMS key to encrypt notebooks in the control plane.*</p>
 </li>
 <li>
-<p>Enable secure cluster connectivity.</p>
+<p>Security groups to enable secure cluster connectivity.</p>
 </li>
 </ul>
 </div>
@@ -1264,6 +1261,12 @@ Certain regions are available on an opt-in basis. Refer to the AWS Documentation
 </div>
 <div class="paragraph">
 <p>The <em>AdministratorAccess</em> managed policy within IAM provides sufficient permissions, although your organization may choose to use a custom policy with more restrictions.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_prepare_your_databricks_account">Prepare your Databricks account</h4>
+<div class="paragraph">
+<p>You need a <a href="https://docs.databricks.com/getting-started/try-databricks.html#free-trial" target="_blank" rel="noopener">Databricks multi-workspace account</a>, to launch this Quick Start.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1710,7 +1713,7 @@ and to share your customizations with others.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-08-04 18:43:53 UTC
+Last updated 2020-08-04 19:03:42 UTC
 </div>
 </div>
 </body>
