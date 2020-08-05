@@ -1417,7 +1417,7 @@ Region', and 'Quick Start S3 key prefix', unless you are customizing the Quick S
 <td class="tableblock halign-left valign-top"><p class="tableblock">All new AWS objects get a tag with key 'Name'. Specify the value for this tag so that you can identify all new AWS objects that this template creates.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The Databricks multi-workspace master account ID
+<td class="tableblock halign-left valign-top"><p class="tableblock">Databricks multi-workspace master account ID
 (<code>MWSAccountId</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Your Databricks multi-workspace master account ID. Review your Multi-workspace API welcome email for this ID. Protect this ID like a credential. Format is aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee.</p></td>
@@ -1435,19 +1435,19 @@ Region', and 'Quick Start S3 key prefix', unless you are customizing the Quick S
 <td class="tableblock halign-left valign-top"><p class="tableblock">AWS Region where the workspace will be created. Only some regions are supported. To use customer-managed keys to encrypt notebooks, you must specify either region us-east-1 or us-west-2.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name for new workspace deployment (your workspace subdomain)
+<td class="tableblock halign-left valign-top"><p class="tableblock">New workspace deployment name (your workspace subdomain)
 (<code>DeploymentName</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This value defines your workspace&#8217;s name and also the subdomain for your workspace URL. The workspace URL is &lt;deployment-name&gt;.cloud.databricks.com. Alphanumeric characters with a minimum length 8. To conform to subdomain rules, hyphens are also allowed but not as first or last character. The deployment name must be unique across all non-deleted workspaces across all AWS regions.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Your multi-workspace master account email address
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mlti-workspace master account email address
 (<code>Username</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Your multi-workspace account email address, which is used for REST API authentication as your username. This is case sensitive. Use the same capitalization as when you sent it to your Databricks representative.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Your multi-workspace master account password
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multi-workspace master account password
 (<code>Password</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Your multi-workspace account password, which is used for REST API authentication. This is case sensitive. Minimum length of 8 characters.</p></td>
@@ -1476,19 +1476,19 @@ Region', and 'Quick Start S3 key prefix', unless you are customizing the Quick S
 <td class="tableblock halign-left valign-top"><p class="tableblock">NO_DESCRIPTION</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The already existing AWS IAM arn cross-account role to be used
+<td class="tableblock halign-left valign-top"><p class="tableblock">Already existing AWS IAM arn cross-account role
 (<code>IAMArn</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Specify an existing IAM role arn if you have answered YES. For additional guidance in creating an IAM role, see <a href="https://docs.databricks.com/administration-guide/multiworkspace/iam-role.html" class="bare">https://docs.databricks.com/administration-guide/multiworkspace/iam-role.html</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name for new AWS IAM cross-account role
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS IAM cross-account role name
 (<code>IAMRole</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The name for your new new cross-account role, if you answered NO. Only alphanumeric characters. Minimum length 8.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name for new root AWS S3 bucket
+<td class="tableblock halign-left valign-top"><p class="tableblock">Root AWS S3 bucket name
 (<code>BucketName</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The name for your new S3 root bucket. Only alphanumeric characters. Minimum length 8.</p></td>
@@ -1511,19 +1511,19 @@ Region', and 'Quick Start S3 key prefix', unless you are customizing the Quick S
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AWS KMS Key ARN for your customer-managed key in KMS
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS KMS Key ARN for your customer-managed key
 (<code>KeyArn</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set only if using the feature customer-managed key for notebooks. This field specifies the KMS Key ARN to use encrypt and decrypt the workspace notebooks in the control plane. To set up your KMS key, see <a href="https://docs.databricks.com/security/keys/customer-managed-keys-notebook-aws.html" class="bare">https://docs.databricks.com/security/keys/customer-managed-keys-notebook-aws.html</a>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AWS KMS alias name for your customer-managed key in KMS
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS KMS alias name for your customer-managed key
 (<code>KeyAlias</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The KMS key alias. Leave empty if you didn&#8217;t specify Key ARN.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AWS region for your customer-managed key in KMS
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS region for your customer-managed key
 (<code>KeyRegion</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The AWS region of your KMS key. Leave empty if you didn&#8217;t specify Key ARN.</p></td>
@@ -1546,19 +1546,19 @@ Region', and 'Quick Start S3 key prefix', unless you are customizing the Quick S
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ID for your VPC
+<td class="tableblock halign-left valign-top"><p class="tableblock">VPC ID
 (<code>VPCID</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set only if using the customer-managed VPC feature. The ID for your AWS Virtual Private Cloud (VPC) in which to create the new workspace. Format is vpc-xxxxxxxxxxxxxxxx. For additional guidance, see <a href="https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html" class="bare">https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html</a>. If unspecified, Databricks creates the new workspace in a new VPC that Databricks creates.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">At least two AWS subnet IDs in your VPC. Format is subnet-xxxxxxxxxxxxxxxxx. These subnets cannot be shared with any other resources, including other Databricks workspaces or other non-Databricks resources.
+<td class="tableblock halign-left valign-top"><p class="tableblock">Subnet IDs
 (<code>SubnetIDs</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A list of at least two subnet IDs for subnets in your Virtual Private Cloud (VPC) separated by commas. These subnets CANNOT be shared with other workspaces nor any other non-Databricks resources. Each subnet must have a netmask between /17 and /25. Subnets must be private. Subnets must have outbound access to the public network using a NAT gateway and internet gateway, or other similar customer-managed appliance infrastructure. The NAT gateway must be set up in its own subnet that routes quad-zero (0.0.0.0/0) traffic to an internet gateway or other customer-managed appliance infrastructure. For additional guidance, see <a href="https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html" class="bare">https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html</a>. Leave empty if you didn&#8217;t specify VPCID.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The security group IDs
+<td class="tableblock halign-left valign-top"><p class="tableblock">Security group IDs
 (<code>SecurityGroupIDs</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires Input</em></strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The name of one or more security groups in your Virtual Private Cloud (VPC). Format is sg-xxxxxxxxxxxxxxxxx. To provide multiple, separate with commas. Databricks must have access to at least one security group and no more than five security groups. You can reuse existing security groups rather than create new ones. For additional guidance, see <a href="https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html" class="bare">https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html</a>. Leave empty if you didn&#8217;t specify VPCID.</p></td>
@@ -1624,6 +1624,22 @@ Region', and 'Quick Start S3 key prefix', unless you are customizing the Quick S
 <img src="images/cfn_outputs.png" alt="cfn_outputs" width="648" height="439">
 </div>
 <div class="title">Figure 3. Databricks outputs after successful deployment</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="10">
+<li>
+<p>Above screenshot shows the outputs when deploying Multi-workspace configured with a Databricks managed VPC with an optional customer-managed key for Notebooks.</p>
+</li>
+<li>
+<p>Below screenshot shows the outputs when deploying Multi-workspace configured with a customer-managed VPC with an optional customer-managed key for Notebooks.</p>
+</li>
+</ol>
+</div>
+<div id="cfn_outputs" class="imageblock">
+<div class="content">
+<img src="images/databricks-cmanaged-outputs.png" alt="cfn_outputs" width="648" height="439">
+</div>
+<div class="title">Figure 4. Databricks Multi-workspace with customer-managed VPC outputs after successful deployment</div>
 </div>
 </div>
 </div>
@@ -1713,7 +1729,7 @@ and to share your customizations with others.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-08-04 19:03:42 UTC
+Last updated 2020-08-05 19:39:10 UTC
 </div>
 </div>
 </body>
