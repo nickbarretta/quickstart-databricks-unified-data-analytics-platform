@@ -15,9 +15,9 @@
 [width="100%",cols="16%,11%,73%",options="header",]
 |===
 |Parameter label (name) |Default Value|Description|Are you providing an existing IAM Role arn?
-(`IAMArnOrRoleQuestion`)|`Yes`|NO_DESCRIPTION|Already existing AWS IAM arn cross-account role
+(`IAMArnOrRoleQuestion`)|`Yes`|Select No, if you want to create a new IAM role for cross-account access. Otherwise, leave it to default value Yes and provide an IAM ARN below.|Already existing AWS IAM arn cross-account role
 (`IAMArn`)|`**__Requires Input__**`|Specify an existing IAM role arn if you have answered YES. For additional guidance in creating an IAM role, see https://docs.databricks.com/administration-guide/multiworkspace/iam-role.html|AWS IAM cross-account role name
-(`IAMRole`)|`**__Requires Input__**`|The name for your new new cross-account role, if you answered NO. Only alphanumeric characters. Minimum length 8.|Root AWS S3 bucket name
+(`IAMRole`)|`**__Requires Input__**`|The name for your new cross-account role, if you answered NO. Only alphanumeric characters. Minimum length 8.|Root AWS S3 bucket name
 (`BucketName`)|`**__Requires Input__**`|The name for your new S3 root bucket. Only alphanumeric characters. Minimum length 8.
 |===
 .Optional: For customer-managed key for notebooks (Enterprise Tier)
