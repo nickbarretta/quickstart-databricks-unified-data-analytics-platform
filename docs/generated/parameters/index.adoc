@@ -1,3 +1,3 @@
 
-=== Parameters for launching a multiworkspace environment
+=== Parameters for launching into an existing VPC
 include::databricks-multi-workspace.template.adoc[]
