@@ -1,6 +1,4 @@
 
-:template_addpassrolepermission:
-:template_aws_iam_instanceprofile:
 :template_aws_iam_role:
 :template_aws_lambda_function:
 :template_aws_s3_bucket:
@@ -11,15 +9,12 @@
 :template_createnetworks:
 :template_createstorageconfigurations:
 :template_createworkspace:
-:template_custom_addpassrolepermission:
 :template_custom_copyzips:
 :template_custom_createcredentials:
 :template_custom_createcustomermanagedkey:
 :template_custom_createnetworks:
 :template_custom_createstorageconfigurations:
 :template_custom_createworkspace:
-:template_custom_edittrustrelationship:
-:template_edittrustrelationship:
 :template_iam:
 :template_lambda:
 :template_s3:
