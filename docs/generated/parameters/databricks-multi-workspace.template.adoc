@@ -3,42 +3,42 @@
 [width="100%",cols="16%,11%,73%",options="header",]
 |===
 |Parameter label (name) |Default value|Description|Tag value used for all AWS resources
-(`TagValue`)|`databricks-quickstart-cloud-formation`|All new AWS objects get a tag with the key 'Name'. Enter the value for this tag so that you can identify all new AWS objects that this template creates. See https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html for tagging AWS.|Databricks Account ID
-(`AccountId`)|`aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee`|Your account must be on the E2 version of the platform. For additional information, please refer to https://docs.databricks.com/getting-started/overview.html#e2-architecture.|AWS Account ID
-(`AWSAccountId`)|`111111111111`|Your AWS account ID. The format is a 12-digit number.|AWS Region of the Databricks workspace
-(`AWSRegion`)|`**__Requires input__**`|AWS Region where the workspace will be created. Customer-managed keys to encrypt notebooks is NOT currently supported in region us-west-1.|The pricing tier of the workspace
-(`PricingTier`)|`**__Blank string__**`|If you do not provide this, the API will default to the highest pricing tier available to your account. See https://databricks.com/product/aws-pricing for available pricing tier information.|New workspace deployment name (your workspace subdomain)
-(`DeploymentName`)|`**__Requires input__**`|Choose your deployment_name value carefully. The deployment name defines part of the subdomain for the workspace, such as <workspace-deployment-name>.cloud.databricks.com. Hyphens are allowed but not the first or last character. If your account has a deployment name prefix, the prefix is added before the deployment name separated by a hyphen.  If your account has a non-empty deployment name prefix and you set deployment_name to the reserved keyword EMPTY, deployment_name is replaced by your account prefix. For more examples, see https://docs.databricks.com/administration-guide/account-api/new-workspace.html#step-5-create-the-workspace.|Workspace account email address
+(`TagValue`)|`databricks-quickstart-cloud-formation`|All new AWS objects get a tag with the key name. Enter a value for this tag so that you can identify all new AWS objects that this template creates. See https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html.|Databricks account ID
+(`AccountId`)|`aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee`|Your account must be on the E2 version of the platform. See https://docs.databricks.com/getting-started/overview.html#e2-architecture.|AWS account ID
+(`AWSAccountId`)|`111111111111`|This must be a 12-digit number.|AWS Region of the Databricks workspace
+(`AWSRegion`)|`**__Requires input__**`|AWS Region where the workspace will be created. Customer-managed keys to encrypt notebooks are not supported in Region us-west-1.|Pricing tier of the workspace
+(`PricingTier`)|`**__Blank string__**`|Choose a pricing tier. If you keep this box blank, the API will default to the highest tier available to your account. See https://databricks.com/product/aws-pricing.|Name of the new workspace deployment
+(`DeploymentName`)|`**__Requires input__**`|(Optional but recommended) Unique name that defines part of the workspace subdomain, such as <workspace-deployment-name>.cloud.databricks.com. Hyphens (-) are allowed but not as the first or last character. If your account has a deployment name prefix, the prefix (followed by a hyphen) is added before the deployment name. If your account has a deployment name prefix and you set DeploymentName to the reserved keyword EMPTY, DeploymentName is replaced by your account prefix. See https://docs.databricks.com/administration-guide/account-api/new-workspace.html#step-5-create-the-workspace.|Workspace account email address
 (`Username`)|`**__Requires input__**`|Your account email address, which is used for REST API authentication as your user name. This is case-sensitive. Use the same capitalization as when you sent it to your Databricks representative.|Workspace account password
 (`Password`)|`**__Requires input__**`|Your account password, which is used for REST API authentication. This is case-sensitive. Minimum length is 8 characters.
 |===
 .Required IAM role and S3 bucket configuration
 [width="100%",cols="16%,11%,73%",options="header",]
 |===
-|Parameter label (name) |Default value|Description|AWS IAM cross-account role name
-(`IAMRole`)|`rolename`|Specify a unique cross-account IAM role name. This must NOT already exist. Refer to https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html for RoleName maning convention.|Root AWS S3 bucket name
-(`BucketName`)|`**__Requires input__**`|Name of your new S3 root bucket. Only alphanumeric characters. Refer to https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html for bucket naming rules.
+|Parameter label (name) |Default value|Description|Cross-account IAM role name
+(`IAMRole`)|`rolename`|Specify a unique cross-account IAM role name. This name must not already exist. For naming rules, see https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html.|Root S3 bucket name
+(`BucketName`)|`**__Requires input__**`|Name of your new S3 root bucket. Use only alphanumeric characters. For naming rules, see https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html.
 |===
-.Customer-managed key configuration for notebooks (Enterprise tier, optional)
+.(Optional) Customer-managed-key configuration for notebooks—requires the Enterprise tier
 [width="100%",cols="16%,11%,73%",options="header",]
 |===
-|Parameter label (name) |Default value|Description|AWS KMS key ARN for customer-managed key
-(`KeyArn`)|`**__Blank string__**`|AWS KMS key ARN to encrypt and decrypt the workspace notebooks in the control plane. Set only if using the feature customer managed key for notebooks. To set up your AWS KMS key, see https://docs.databricks.com/security/keys/customer-managed-keys-notebook-aws.html.|AWS KMS alias name for customer-managed key
-(`KeyAlias`)|`**__Blank string__**`|AWS KMS key alias. Keep blank if you didn't specify a key ARN.|AWS Region for customer-managed key
-(`KeyRegion`)|`**__Blank string__**`|AWS Region of your AWS KMS key. Keep blank if you didn't specify a key ARN.
+|Parameter label (name) |Default value|Description|ARN for customer-managed AWS KMS key
+(`KeyArn`)|`**__Blank string__**`|(Optional) AWS KMS key ARN to encrypt and decrypt the workspace notebooks in the control plane. Set only if using the feature customer-managed key for notebooks. See https://docs.databricks.com/security/keys/customer-managed-keys-notebook-aws.html.|Alias name for customer-managed AWS KMS key
+(`KeyAlias`)|`**__Blank string__**`|(Optional) AWS KMS key alias. Keep blank if you didn't specify a key ARN.|AWS Region for customer-managed AWS KMS key
+(`KeyRegion`)|`**__Blank string__**`|(Optional) AWS Region of your AWS KMS key. Keep blank if you didn't specify a key ARN.
 |===
-.Customer-managed VPC configuration (Premium tier, optional)
+.(Optional) Customer-managed VPC configuration—requires the Premium tier
 [width="100%",cols="16%,11%,73%",options="header",]
 |===
 |Parameter label (name) |Default value|Description|VPC ID
-(`VPCID`)|`**__Blank string__**`|ID for your VPC in which to create the new workspace. Set only if using the customer managed VPC feature. Format is vpc-xxxxxxxxxxxxxxxx. For additional guidance, see https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html. If unspecified, Databricks creates the new workspace in a new VPC that Databricks creates.|Private Subnet IDs
-(`SubnetIDs`)|`**__Blank string__**`|List of at least two private subnet IDs in your VPC, separated by commas. These subnets cannot be shared with other workspaces nor any other non-Databricks resources. Each subnet must have a netmask between /17 and /25. Subnets must be private. Subnets must have outbound access to the public network using a NAT gateway and internet gateway or similar customer managed appliance infrastructure. The NAT gateway must be set up in its own subnet that routes quad-zero (0.0.0.0/0) traffic to an internet gateway or similar customer managed appliance infrastructure. See https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html. Keep blank if you didn't specify VPCID.|Security group IDs
-(`SecurityGroupIDs`)|`**__Blank string__**`|Name of one or more security groups in your VPC. Format is sg-xxxxxxxxxxxxxxxxx. To provide multiple, separate with commas. Databricks must have access to at least one security group and no more than five security groups. You can reuse existing security groups rather than create new ones. For additional guidance, see https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html. Keep blank if you didn't specify VPCID.
+(`VPCID`)|`**__Blank string__**`|(Optional) ID for your VPC in which to create the new workspace. Set only if using the customer-managed VPC feature. The format is vpc-xxxxxxxxxxxxxxxx. If unspecified, Databricks creates the new workspace in a new VPC that Databricks creates. See https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html.|Private-subnet IDs
+(`SubnetIDs`)|`**__Blank string__**`|(Optional) At least two private-subnet IDs in your VPC, separated by commas. These subnets cannot be shared with other workspaces nor any other non-Databricks resources. Each subnet must have a netmask between /17 and /25. Subnets must be private. Subnets must have outbound access to the public network using a NAT gateway and internet gateway or similar customer-managed appliance infrastructure. The NAT gateway must be set up in its own subnet that routes quad-zero (0.0.0.0/0) traffic to an internet gateway or similar customer-managed appliance infrastructure.  Keep blank if you didn't specify VPCID. See https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html.|Security-group IDs
+(`SecurityGroupIDs`)|`**__Blank string__**`|(Optional) Names of one or more security groups in your VPC. The format is sg-xxxxxxxxxxxxxxxxx. To provide multiple IDs, separate with commas. Databricks must have access to at least one security group and no more than five security groups. You can reuse existing security groups rather than create new ones. Keep blank if you didn't specify VPCID. See https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html.
 |===
-.Quick Start Configuration
+.Quick Start configuration
 [width="100%",cols="16%,11%,73%",options="header",]
 |===
 |Parameter label (name) |Default value|Description|Quick Start S3 bucket name
-(`QSS3BucketName`)|`aws-quickstart`|The S3 bucket that you created for your copy of Quick Start assets. Use this if you decide to customize the Quick Start. This bucket name can include numbers, lowercase letters, uppercase letters, and hyphens, but do not start or end with a hyphen (-).|Quick Start S3 key prefix
-(`QSS3KeyPrefix`)|`quickstart-databricks-unified-data-analytics-platform/`|The S3 key prefix that is used to simulate a folder for your copy of Quick Start assets. Use this if you decide to customize the Quick Start. This prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slashes (/). See https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html.
+(`QSS3BucketName`)|`aws-quickstart`|S3 bucket that you created for your copy of Quick Start assets. Use this if you decide to customize the Quick Start. This bucket name can include numbers, lowercase letters, uppercase letters, and hyphens, but do not start or end with a hyphen (-).|Quick Start S3 key prefix
+(`QSS3KeyPrefix`)|`quickstart-databricks-unified-data-analytics-platform/`|S3 key prefix that is used to simulate a folder for your copy of Quick Start assets. Use this if you decide to customize the Quick Start. This prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slashes (/). See https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html.
 |===
