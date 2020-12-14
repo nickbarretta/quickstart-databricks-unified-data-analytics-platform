@@ -778,6 +778,9 @@ a img {
 .preview_mode .tableblock {
   background:#ffffb3;
 }
+
+.footer-text{color:rgba(255,255,255,.8);line-height:1.44;background:#1c222a;padding:1.25em;max-width:100%;margin-bottom:unset}
+p.footer-text a{color:#d7d8d8}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -829,11 +832,11 @@ a img {
 <h2 id="_quick_start_reference_deployment" class="discrete text-left text-center">Quick Start Reference Deployment</h2>
 <div class="imageblock text-center">
 <div class="content">
-<img src="images/aws-quickstart-graphic.png" alt="QS" width="80" height="80">
+<img src="https://aws-quickstart.s3.amazonaws.com/quickstart-databricks-unified-data-analytics-platform/docs/boilerplate/.images/aws-quickstart-graphic.png" alt="QS" width="80" height="80">
 </div>
 </div>
 <div class="paragraph text-center">
-<p><strong>September, 2020</strong><br>
+<p><strong>September 2020</strong><br>
 <em>Denis Dubeau, Databricks</em><br>
 <em>Shivansh Singh, AWS Quick Start team</em></p>
 </div>
@@ -874,9 +877,7 @@ report bugs, or submit feature ideas for this Quick Start.
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Amazon may share who uses AWS
-Quick Starts with the AWS Partner Network (APN) Partner that
-collaborated with AWS on the content of the Quick Start.
+Amazon may share user-deployment information with the AWS Partner that collaborated with AWS on the Quick Start.
 </td>
 </tr>
 </table>
@@ -964,7 +965,7 @@ collaborated with AWS on the content of the Quick Start.
 <div class="sect2">
 <h3 id="_s3_bucket_in_the_customer_account">S3 bucket in the customer account</h3>
 <div class="paragraph">
-<p>During workspace creation, an Amazon Simple Storage Service (Amazon S3) bucket is created in the customer account. It provides Databricks access to the managed S3 bucket with a cross-account AWS Identity and Access Management (IAM) role. IAM roles allow customers to access data from Databricks clusters without having to embed AWS keys in notebooks.</p>
+<p>During workspace creation, an Amazon Simple Storage Service (Amazon S3) bucket is created in the customer account with default encryption enabled. It provides Databricks access to the managed S3 bucket with a cross-account AWS Identity and Access Management (IAM) role. IAM roles allow customers to access data from Databricks clusters without having to embed AWS keys in notebooks.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -986,6 +987,22 @@ The customer is responsible for backing up, securing access to, and encrypting c
 <li>
 <p><strong>Databricks-managed directories.</strong> These directories are inaccessible to customers using Databricks File System (DBFS). Some data—for example, Spark driver log initial storage and job output—is stored or read by Databricks in hidden directories. This data cannot be accessed directly by customer notebooks at a DBFS path or through the AWS admin interface.</p>
 </li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Databricks strongly recommends that you enable bucket versioning. Versioning allows you to restore earlier versions of files in the bucket if files are accidentally modified or deleted. For enabling bucket versioning, refer to the <a href="https://docs.databricks.com/administration-guide/account-settings/aws-storage.html#step-2b-enable-bucket-versioning" target="_blank" rel="noopener">Databricks documentation</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><strong>DBFS root storage.</strong> This is accessible to customers using DBFS. Other areas of storage can be accessed by customer notebooks at a DBFS path. For example, the FileStore area of DBFS root storage is where uploaded data files and code libraries are stored when imported using the web application. Other DBFS paths are available for customer usage.</p>
 </li>
@@ -1037,7 +1054,7 @@ this Quick Start. There is no additional cost for
 using the Quick Start.</p>
 </div>
 <div class="paragraph">
-<p>The AWS CloudFormation template for this Quick Start includes
+<p>The AWS CloudFormation templates for Quick Starts include
 configuration parameters that you can customize. Some of the settings,
 such as the instance type, affect the cost of deployment. For cost estimates,
 see the pricing pages for each AWS service you use. Prices are subject to change.</p>
@@ -1049,7 +1066,7 @@ see the pricing pages for each AWS service you use. Prices are subject to change
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-After you deploy the Quick Start, enable the <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-gettingstarted-turnonreports.html" target="_blank" rel="noopener">AWS Cost and Usage Report</a> to deliver billing metrics to an Amazon Simple Storage Service (Amazon S3) bucket in your account. It provides cost estimates based on usage throughout each month and aggregates the data at the end of the month. For more information about the report, see the <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html" target="_blank" rel="noopener">AWS documentation</a>.
+After you deploy the Quick Start, <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-gettingstarted-turnonreports.html" target="_blank" rel="noopener">create AWS Cost and Usage Reports</a> to deliver billing metrics to an Amazon Simple Storage Service (Amazon S3) bucket in your account. These reports provide cost estimates based on usage throughout each month and aggregate the data at the end of the month. For more information, see <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html" target="_blank" rel="noopener">What are AWS Cost and Usage Reports?</a>
 </td>
 </tr>
 </table>
@@ -1170,13 +1187,7 @@ After you deploy the Quick Start, enable the <a href="https://docs.aws.amazon.co
 <div class="sect2">
 <h3 id="_specialized_knowledge">Specialized knowledge</h3>
 <div class="paragraph">
-<p>This deployment guide requires a moderate level of familiarity with
-AWS services. If you’re new to AWS, visit the
-<a href="https://aws.amazon.com/getting-started/" target="_blank" rel="noopener">Getting Started Resource Center</a>
-and the <a href="https://aws.amazon.com/training/">AWS Training and Certification
-website</a>. These sites provide materials for learning how to design,
-deploy, and operate your infrastructure and applications on the AWS
-Cloud.</p>
+<p>This deployment requires a moderate level of familiarity with AWS services. If you’re new to AWS, visit <a href="https://aws.amazon.com/getting-started/" target="_blank" rel="noopener">Getting Started with AWS</a> and <a href="https://aws.amazon.com/training/" target="_blank" rel="noopener">Training and Certification</a>. These sites provide materials for learning how to design, deploy, and operate your infrastructure and applications on the AWS Cloud.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1194,9 +1205,9 @@ Cloud.</p>
 <p>Before you launch the Quick Start, your account must be configured as specified in the following table. Otherwise, deployment might fail.</p>
 </div>
 <div class="sect3">
-<h4 id="_resource_limits">Resource limits</h4>
+<h4 id="_resource_quotas">Resource quotas</h4>
 <div class="paragraph">
-<p>If necessary, request <a href="https://console.aws.amazon.com/servicequotas/home?region=us-east-2#!/" target="_blank" rel="noopener">service quota increases</a> for the following resources. You might need to request increases if your existing deployment currently uses these resources, and this Quick Start deployment could result in exceeding the default quotas. The <a href="https://console.aws.amazon.com/servicequotas/home?region=us-east-2#!/" target="_blank" rel="noopener">Service Quotas console</a> displays your usage and quotas for some aspects of some services. For more information, see the <a href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html" target="_blank" rel="noopener">AWS documentation</a>.</p>
+<p>If necessary, request <a href="https://console.aws.amazon.com/servicequotas/home?region=us-east-2#!/" target="_blank" rel="noopener">service quota increases</a> for the following resources. You might request quota increases to avoid exceeding the default limits for any resources that are shared across multiple deployments. The <a href="https://console.aws.amazon.com/servicequotas/home?region=us-east-2#!/" target="_blank" rel="noopener">Service Quotas console</a> displays your usage and quotas for some aspects of some services. For more information, see <a href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html" target="_blank" rel="noopener">What is Service Quotas?</a> and <a href="https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html" target="_blank" rel="noopener">AWS service quotas</a>.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1246,6 +1257,24 @@ Cloud.</p>
 <div class="ulist">
 <ul>
 <li>
+<p>ap-northeast-1 (Tokyo)</p>
+</li>
+<li>
+<p>ap-south-1 (Mumbai)</p>
+</li>
+<li>
+<p>ap-southeast-2 (Sydney)</p>
+</li>
+<li>
+<p>ca-central-1 (Canada Central)</p>
+</li>
+<li>
+<p>eu-central-1 (Frankfurt)</p>
+</li>
+<li>
+<p>eu-west-1 (Ireland)</p>
+</li>
+<li>
 <p>us-east-1 (N. Virginia)</p>
 </li>
 <li>
@@ -1257,15 +1286,6 @@ Cloud.</p>
 <li>
 <p>us-west-2 (Oregon)</p>
 </li>
-<li>
-<p>ca-central-1 (Canada Central)</p>
-</li>
-<li>
-<p>eu-central-1 (Frankfurt)</p>
-</li>
-<li>
-<p>eu-west-1 (Ireland)</p>
-</li>
 </ul>
 </div>
 <div class="admonitionblock tip">
@@ -1275,7 +1295,7 @@ Cloud.</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Certain Regions are available on an opt-in basis. Refer to the AWS Documentation on <a href="https://docs.aws.amazon.com/general/latest/gr/rande-manage.html" target="_blank" rel="noopener">Managing Regions</a> for more information.
+Certain Regions are available on an opt-in basis. See <a href="https://docs.aws.amazon.com/general/latest/gr/rande-manage.html" target="_blank" rel="noopener">Managing AWS Regions</a>.
 </td>
 </tr>
 </table>
@@ -1284,10 +1304,7 @@ Certain Regions are available on an opt-in basis. Refer to the AWS Documentation
 <div class="sect3">
 <h4 id="_iam_permissions">IAM permissions</h4>
 <div class="paragraph">
-<p>Before launching the Quick Start, you must log in to the AWS Management Console with <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html" target="_blank" rel="noopener">IAM permissions</a> for the resources and actions the templates deploy.</p>
-</div>
-<div class="paragraph">
-<p>The <em>AdministratorAccess</em> managed policy within IAM provides sufficient permissions, although your organization may choose to use a custom policy with more restrictions.</p>
+<p>Before launching the Quick Start, you must sign in to the AWS Management Console with IAM permissions for the resources that the templates deploy. The <em>AdministratorAccess</em> managed policy within IAM provides sufficient permissions, although your organization may choose to use a custom policy with more restrictions. For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html" target="_blank" rel="noopener">AWS managed policies for job functions</a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1307,9 +1324,26 @@ Certain Regions are available on an opt-in basis. Refer to the AWS Documentation
 <p>Deploy a Databricks workspace and create a <strong>new</strong> cross-account IAM role. You must have sufficient permissions to create a new IAM role.</p>
 </li>
 <li>
-<p>Deploy a Databricks workspace and use an <strong>existing</strong> cross-account IAM role. You can create an appropriate role and policy for your deployment type by following these <a href="https://docs.databricks.com/administration-guide/account-api/iam-role.html">steps</a>. By selecting the second deployment option, you will also need an additional IAM role with the AWSLambdaBasicExecutionRole policy.</p>
+<p>Deploy a Databricks workspace and use an <strong>existing</strong> cross-account IAM role. You can create an appropriate role and policy for your deployment type by following these <a href="https://docs.databricks.com/administration-guide/account-api/iam-role.html">steps</a>. For this deployment option, you will need an additional IAM role with the AWSLambdaBasicExecutionRole policy as follow:</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "CloudWatch",
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogStream",
+                "logs:CreateLogGroup",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "*"
+        }
+    ]
+}</p>
 </div>
 </div>
 </div>
@@ -1395,8 +1429,7 @@ You are responsible for the cost of the AWS services used while running this Qui
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Unless you are customizing the Quick Start templates for your own deployment projects, we recommend that you keep the default settings for the parameters labeled <code>Quick Start S3 bucket name</code>, <code>Quick Start S3 bucket
-Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parameter settings automatically updates code references to point to a new Quick Start location. For more information, see the <a href="https://aws-quickstart.github.io/option1.html" target="_blank" rel="noopener">AWS Quick Start Contributor’s Guide</a>.
+Unless you are customizing the Quick Start templates for your own deployment projects, keep the default settings for the parameters <strong>Quick Start S3 bucket name</strong>, <strong>Quick Start S3 bucket Region</strong>, and <strong>Quick Start S3 key prefix</strong>. Changing these settings automatically updates code references to point to a new Quick Start location. For more information, see the <a href="https://aws-quickstart.github.io/option1.html" target="_blank" rel="noopener">AWS Quick Start Contributor’s Guide</a>.
 </td>
 </tr>
 </table>
@@ -1790,7 +1823,7 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 <div class="olist arabic">
 <ol class="arabic" start="5">
 <li>
-<p>On the options page, you can <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html" target="_blank" rel="noopener">specify tags</a> (key-value pairs) for resources in your stack and <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-add-tags.html" target="_blank" rel="noopener">set advanced options</a>. When you’re done, choose <strong>Next</strong>.</p>
+<p>On the <strong>Configure stack options</strong> page, you can <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html" target="_blank" rel="noopener">specify tags</a> (key-value pairs) for resources in your stack and <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-add-tags.html" target="_blank" rel="noopener">set advanced options</a>. When you’re finished, choose <strong>Next</strong>.</p>
 </li>
 <li>
 <p>On the <strong>Review</strong> page, review and confirm the template settings. Under <strong>Capabilities</strong>, select the two check boxes to acknowledge that the template creates IAM resources and might require the ability to automatically expand macros.</p>
@@ -1808,7 +1841,7 @@ Region</code>, and <code>Quick Start S3 key prefix</code>. Changing these parame
 </div>
 <div id="cfn_outputs" class="imageblock">
 <div class="content">
-<a class="image" href="images/cfn_outputs.png"><img src="images/cfn_outputs.png" alt="cfn_outputs" width="648" height="439"></a>
+<a class="image" href="images/cfn_outputs.png"><img src="images/cfn_outputs.png" alt="cfn_outputs" width="100%" height="100%"></a>
 </div>
 <div class="title">Figure 3. Databricks outputs after successful deployment</div>
 </div>
@@ -1866,7 +1899,7 @@ When you set <strong>Rollback on failure</strong> to <strong>Disabled</strong>, 
 <h2 id="_send_us_feedback">Send us feedback</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To post feedback, submit feature ideas, or report bugs, use the <strong>Issues</strong> section of the <a href="https://github.com/aws-quickstart/quickstart-databricks-unified-data-analytics-platform" target="_blank" rel="noopener">GitHub repository</a> for this Quick Start. If you’d like to submit code, please review the <a href="https://aws-quickstart.github.io/" target="_blank" rel="noopener">Quick Start Contributor’s Guide</a>.</p>
+<p>To post feedback, submit feature ideas, or report bugs, use the <strong>Issues</strong> section of the <a href="https://github.com/aws-quickstart/quickstart-databricks-unified-data-analytics-platform" target="_blank" rel="noopener">GitHub repository</a> for this Quick Start. To submit code, see the <a href="https://aws-quickstart.github.io/" target="_blank" rel="noopener">Quick Start Contributor’s Guide</a>.</p>
 </div>
 </div>
 </div>
@@ -1882,14 +1915,11 @@ When you set <strong>Rollback on failure</strong> to <strong>Disabled</strong>, 
 <h2 id="_github_repository">GitHub repository</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can visit our <a href="https://github.com/aws-quickstart/quickstart-databricks-unified-data-analytics-platform" target="_blank" rel="noopener">GitHub repository</a> to download
+<p>Visit our <a href="https://github.com/aws-quickstart/quickstart-databricks-unified-data-analytics-platform" target="_blank" rel="noopener">GitHub repository</a> to download
 the templates and scripts for this Quick Start, to post your comments,
 and to share your customizations with others.</p>
 </div>
 <hr>
-<div class="paragraph">
-<p>© 2020, Amazon Web Services Inc., or its affiliates, and Databricks. All rights reserved.</p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -1904,10 +1934,10 @@ and to share your customizations with others.</p>
 </div>
 </div>
 </div>
-<div id="footer">
-<div id="footer-text">
-Last updated 2020-10-09 18:13:33 UTC
-</div>
-</div>
+<p class="footer-text">
+<!-- We can use document attributes: -->
+<!-- Generated with Asciidoctor v2.0.10. -->
+<a href="https://aws.amazon.com/privacy/">Privacy</a> | <a href="https://aws.amazon.com/terms/">Site terms</a> | &copy; 2020, Amazon Web Services, Inc. or its affiliates and Databricks. All rights reserved.
+</p>
 </body>
 </html>
