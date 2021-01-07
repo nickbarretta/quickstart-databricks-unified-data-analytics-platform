@@ -2,19 +2,20 @@
 .Workspace configuration
 [width="100%",cols="16%,11%,73%",options="header",]
 |===
-|Parameter label (name) |Default value|Description|Tag value used for all AWS resources
-(`TagValue`)|`databricks-quickstart-cloud-formation`|All new AWS objects get a tag with the key name. Enter a value for this tag so that you can identify all new AWS objects that this template creates. See https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html.|Databricks account ID
-(`AccountId`)|`aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee`|Your account must be on the E2 version of the platform. For additional information, please refer to https://docs.databricks.com/getting-started/overview.html#e2-architecture.|AWS Region of the Databricks workspace
-(`AWSRegion`)|`**__Requires input__**`|AWS Region where the workspace will be created. Customer-managed keys to encrypt notebooks are not supported in Region us-west-1.|Pricing tier of the workspace
-(`PricingTier`)|`**__Blank string__**`|If you do not provide this, the API will default to the highest pricing tier available to your account. See https://databricks.com/product/aws-pricing for available pricing tier information.|Name of the new workspace deployment
-(`DeploymentName`)|`**__Requires input__**`|Choose your deployment_name value carefully. The deployment name defines part of the subdomain for the workspace, such as <workspace-deployment-name>.cloud.databricks.com. Hyphens are allowed but not the first or last character. If your account has a deployment name prefix, the prefix is added before the deployment name separated by a hyphen. For more examples, see https://docs.databricks.com/administration-guide/account-api/new-workspace.html#step-5-create-the-workspace. This value must be unique across all non-deleted deployments across all AWS regions.|Workspace account email address
+|Parameter label (name) |Default value|Description|Databricks account ID
+(`AccountId`)|`aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee`|Your account must be on the E2 version of the platform. For additional information, please refer to https://docs.databricks.com/getting-started/overview.html#e2-architecture.|Workspace account email address
 (`Username`)|`**__Requires input__**`|Your account email address, which is used for REST API authentication as your user name. This is case-sensitive. Use the same capitalization as when you sent it to your Databricks representative.|Workspace account password
-(`Password`)|`**__Requires input__**`|Your account password, which is used for REST API authentication. This is case-sensitive. Minimum length is 8 characters.
+(`Password`)|`**__Requires input__**`|Your account password, which is used for REST API authentication. This is case-sensitive. Minimum length is 8 characters.|Pricing tier of the workspace
+(`PricingTier`)|`**__Blank string__**`|If you do not provide this, the API will default to the highest pricing tier available to your account. See https://databricks.com/product/aws-pricing for available pricing tier information.|New workspace deployment name
+(`DeploymentName`)|`**__Requires input__**`|Choose your deployment_name value carefully. The deployment name defines part of the subdomain for the workspace, such as <workspace-deployment-name>.cloud.databricks.com. Hyphens are allowed but not the first or last character. If your account has a deployment name prefix, the prefix is added before the deployment name separated by a hyphen. For more examples, see https://docs.databricks.com/administration-guide/account-api/new-workspace.html#step-5-create-the-workspace. This value must be unique across all non-deleted deployments across all AWS regions.|AWS Region of the Databricks workspace
+(`AWSRegion`)|`**__Requires input__**`|AWS Region where the workspace will be created. Customer-managed keys to encrypt notebooks are not supported in Region us-west-1.|Are you creating this workspace in a HIPAA tier account?
+(`HIPAAparm`)|`No`|Answering 'Yes' will create a cluster template you should use to create clusters in the HIPAA account
 |===
 .Required IAM role and S3 bucket configuration
 [width="100%",cols="16%,11%,73%",options="header",]
 |===
-|Parameter label (name) |Default value|Description|Cross-account IAM role name
+|Parameter label (name) |Default value|Description|IAM role tag value
+(`TagValue`)|`databricks-quickstart-cloud-formation`|Enter a tag value to identify the IAM role created by this template. See https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html.|Cross-account IAM role name
 (`IAMRole`)|`**__Requires input__**`|Specify a unique cross-account IAM role name. This name must not already exist. For naming rules, see https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html.|Root S3 bucket name
 (`BucketName`)|`**__Requires input__**`|Name of your new S3 root bucket. Use only alphanumeric characters. For naming rules, see https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html.
 |===
