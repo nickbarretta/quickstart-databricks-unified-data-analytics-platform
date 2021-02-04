@@ -812,8 +812,8 @@ p.footer-text a{color:#d7d8d8}
 <ul class="sectlevel2">
 <li><a href="#_sign_in_to_your_aws_account">Sign in to your AWS account</a></li>
 <li><a href="#_launch_the_quick_start">Launch the Quick Start</a></li>
-<li><a href="#_parameters_for_deploying_a_workspace_and_creating_a_new_cross_account_iam_role">Parameters for deploying a workspace and creating a new cross-account IAM role</a></li>
 <li><a href="#_parameters_for_deploying_a_workspace_and_using_an_existing_cross_account_iam_role">Parameters for deploying a workspace and using an existing cross-account IAM role</a></li>
+<li><a href="#_parameters_for_deploying_a_workspace_and_creating_a_new_cross_account_iam_role">Parameters for deploying a workspace and creating a new cross-account IAM role</a></li>
 </ul>
 </li>
 <li><a href="#_postdeployment_steps">Postdeployment steps</a></li>
@@ -1450,205 +1450,9 @@ Unless you are customizing the Quick Start templates for your own deployment pro
 </div>
 </div>
 <div class="sect2">
-<h3 id="_parameters_for_deploying_a_workspace_and_creating_a_new_cross_account_iam_role">Parameters for deploying a workspace and creating a new cross-account IAM role</h3>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Workspace configuration</caption>
-<colgroup>
-<col style="width: 16%;">
-<col style="width: 11%;">
-<col style="width: 73%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter label (name)</th>
-<th class="tableblock halign-left valign-top">Default value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Databricks account ID
-(<code>AccountId</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Your account must be on the E2 version of the platform. For additional information, please refer to <a href="https://docs.databricks.com/getting-started/overview.html#e2-architecture" class="bare">https://docs.databricks.com/getting-started/overview.html#e2-architecture</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Workspace account email address
-(<code>Username</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Your account email address, which is used for REST API authentication as your user name. This is case-sensitive. Use the same capitalization as when you sent it to your Databricks representative.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Workspace account password
-(<code>Password</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Your account password, which is used for REST API authentication. This is case-sensitive. Minimum length is 8 characters.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Pricing tier of the workspace
-(<code>PricingTier</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If you do not provide this, the API will default to the highest pricing tier available to your account. See <a href="https://databricks.com/product/aws-pricing" class="bare">https://databricks.com/product/aws-pricing</a> for available pricing tier information.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">New workspace deployment name
-(<code>DeploymentName</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Choose your deployment_name value carefully. The deployment name defines part of the subdomain for the workspace, such as &lt;workspace-deployment-name&gt;.cloud.databricks.com. Hyphens are allowed but not the first or last character. If your account has a deployment name prefix, the prefix is added before the deployment name separated by a hyphen. For more examples, see <a href="https://docs.databricks.com/administration-guide/account-api/new-workspace.html#step-5-create-the-workspace" class="bare">https://docs.databricks.com/administration-guide/account-api/new-workspace.html#step-5-create-the-workspace</a>. This value must be unique across all non-deleted deployments across all AWS regions.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AWS Region of the Databricks workspace
-(<code>AWSRegion</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AWS Region where the workspace will be created. Customer-managed keys to encrypt notebooks are not supported in Region us-west-1.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Are you creating this workspace in a HIPAA tier account?
-(<code>HIPAAparm</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>No</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Answering 'Yes' will create a cluster template you should use to create clusters in the HIPAA account</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Required IAM role and S3 bucket configuration</caption>
-<colgroup>
-<col style="width: 16%;">
-<col style="width: 11%;">
-<col style="width: 73%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter label (name)</th>
-<th class="tableblock halign-left valign-top">Default value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IAM role tag value
-(<code>TagValue</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>databricks-quickstart-cloud-formation</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Enter a tag value to identify the IAM role created by this template. See <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html" class="bare">https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Cross-account IAM role name
-(<code>IAMRole</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specify a unique cross-account IAM role name. This name must not already exist. For naming rules, see <a href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html" class="bare">https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Root S3 bucket name
-(<code>BucketName</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name of your new S3 root bucket. Use only alphanumeric characters. For naming rules, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html" class="bare">https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html</a>.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. (Optional) Customer-managed-key configuration for notebooks—requires the Enterprise tier</caption>
-<colgroup>
-<col style="width: 16%;">
-<col style="width: 11%;">
-<col style="width: 73%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter label (name)</th>
-<th class="tableblock halign-left valign-top">Default value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ARN for customer-managed AWS KMS key
-(<code>KeyArn</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) AWS KMS key ARN to encrypt and decrypt the workspace notebooks in the control plane. Set only if using the feature customer-managed key for notebooks. See <a href="https://docs.databricks.com/security/keys/customer-managed-keys-notebook-aws.html" class="bare">https://docs.databricks.com/security/keys/customer-managed-keys-notebook-aws.html</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Alias name for customer-managed AWS KMS key
-(<code>KeyAlias</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) AWS KMS key alias. Keep blank if you didn&#8217;t specify a key ARN.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AWS Region for customer-managed AWS KMS key
-(<code>KeyRegion</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) AWS Region of your AWS KMS key. Keep blank if you didn&#8217;t specify a key ARN.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. (Optional) Customer-managed VPC configuration—requires the Premium tier</caption>
-<colgroup>
-<col style="width: 16%;">
-<col style="width: 11%;">
-<col style="width: 73%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter label (name)</th>
-<th class="tableblock halign-left valign-top">Default value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">VPC ID
-(<code>VPCID</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) ID for your VPC in which to create the new workspace. Set only if using the customer-managed VPC feature. The format is vpc-xxxxxxxxxxxxxxxx. If unspecified, Databricks creates the new workspace in a new VPC that Databricks creates. See <a href="https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html" class="bare">https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Private-subnet IDs
-(<code>SubnetIDs</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) At least two private-subnet IDs in your VPC, separated by commas. These subnets cannot be shared with other workspaces nor any other non-Databricks resources. Each subnet must have a netmask between /17 and /25. Subnets must be private. Subnets must have outbound access to the public network using a NAT gateway and internet gateway or similar customer-managed appliance infrastructure. The NAT gateway must be set up in its own subnet that routes quad-zero (0.0.0.0/0) traffic to an internet gateway or similar customer-managed appliance infrastructure.  Keep blank if you didn&#8217;t specify VPCID. See <a href="https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html" class="bare">https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Security-group IDs
-(<code>SecurityGroupIDs</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) Names of one or more security groups in your VPC. The format is sg-xxxxxxxxxxxxxxxxx. To provide multiple IDs, separate with commas. Databricks must have access to at least one security group and no more than five security groups. You can reuse existing security groups rather than create new ones. Keep blank if you didn&#8217;t specify VPCID. See <a href="https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html" class="bare">https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html</a>.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Quick Start configuration</caption>
-<colgroup>
-<col style="width: 16%;">
-<col style="width: 11%;">
-<col style="width: 73%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameter label (name)</th>
-<th class="tableblock halign-left valign-top">Default value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Quick Start S3 bucket name
-(<code>QSS3BucketName</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>aws-quickstart</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">S3 bucket that you created for your copy of Quick Start assets. Use this if you decide to customize the Quick Start. This bucket name can include numbers, lowercase letters, uppercase letters, and hyphens, but do not start or end with a hyphen (-).</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Quick Start S3 key prefix
-(<code>QSS3KeyPrefix</code>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>quickstart-databricks-unified-data-analytics-platform/</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">S3 key prefix that is used to simulate a folder for your copy of Quick Start assets. Use this if you decide to customize the Quick Start. This prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slashes (/). See <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html" class="bare">https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html</a>.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
 <h3 id="_parameters_for_deploying_a_workspace_and_using_an_existing_cross_account_iam_role">Parameters for deploying a workspace and using an existing cross-account IAM role</h3>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Workspace configuration</caption>
+<caption class="title">Table 1. Workspace configuration</caption>
 <colgroup>
 <col style="width: 16%;">
 <col style="width: 11%;">
@@ -1707,7 +1511,7 @@ Unless you are customizing the Quick Start templates for your own deployment pro
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Required IAM role and S3 bucket configuration</caption>
+<caption class="title">Table 2. Required IAM role and S3 bucket configuration</caption>
 <colgroup>
 <col style="width: 16%;">
 <col style="width: 11%;">
@@ -1742,7 +1546,7 @@ Unless you are customizing the Quick Start templates for your own deployment pro
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. (Optional) Customer-managed VPC configuration—requires the Premium tier</caption>
+<caption class="title">Table 3. (Optional) Customer-managed VPC configuration—requires the Premium tier</caption>
 <colgroup>
 <col style="width: 16%;">
 <col style="width: 11%;">
@@ -1777,7 +1581,7 @@ Unless you are customizing the Quick Start templates for your own deployment pro
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. (Optional) Customer-managed-key configuration for notebooks—requires the Enterprise tier</caption>
+<caption class="title">Table 4. (Optional) Customer-managed-key configuration for notebooks—requires the Enterprise tier</caption>
 <colgroup>
 <col style="width: 16%;">
 <col style="width: 11%;">
@@ -1808,6 +1612,202 @@ Unless you are customizing the Quick Start templates for your own deployment pro
 (<code>KeyRegion</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AWS Region of your AWS KMS key. Specify only if you have set a key ARN. Otherwise, keep blank.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Quick Start configuration</caption>
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 11%;">
+<col style="width: 73%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter label (name)</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quick Start S3 bucket name
+(<code>QSS3BucketName</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>aws-quickstart</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S3 bucket that you created for your copy of Quick Start assets. Use this if you decide to customize the Quick Start. This bucket name can include numbers, lowercase letters, uppercase letters, and hyphens, but do not start or end with a hyphen (-).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quick Start S3 key prefix
+(<code>QSS3KeyPrefix</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>quickstart-databricks-unified-data-analytics-platform/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S3 key prefix that is used to simulate a folder for your copy of Quick Start assets. Use this if you decide to customize the Quick Start. This prefix can include numbers, lowercase letters, uppercase letters, hyphens (-), and forward slashes (/). See <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html" class="bare">https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_parameters_for_deploying_a_workspace_and_creating_a_new_cross_account_iam_role">Parameters for deploying a workspace and creating a new cross-account IAM role</h3>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Workspace configuration</caption>
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 11%;">
+<col style="width: 73%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter label (name)</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Databricks account ID
+(<code>AccountId</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Your account must be on the E2 version of the platform. For additional information, please refer to <a href="https://docs.databricks.com/getting-started/overview.html#e2-architecture" class="bare">https://docs.databricks.com/getting-started/overview.html#e2-architecture</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Workspace account email address
+(<code>Username</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Your account email address, which is used for REST API authentication as your user name. This is case-sensitive. Use the same capitalization as when you sent it to your Databricks representative.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Workspace account password
+(<code>Password</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Your account password, which is used for REST API authentication. This is case-sensitive. Minimum length is 8 characters.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pricing tier of the workspace
+(<code>PricingTier</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If you do not provide this, the API will default to the highest pricing tier available to your account. See <a href="https://databricks.com/product/aws-pricing" class="bare">https://databricks.com/product/aws-pricing</a> for available pricing tier information.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">New workspace deployment name
+(<code>DeploymentName</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Choose your deployment_name value carefully. The deployment name defines part of the subdomain for the workspace, such as &lt;workspace-deployment-name&gt;.cloud.databricks.com. Hyphens are allowed but not the first or last character. If your account has a deployment name prefix, the prefix is added before the deployment name separated by a hyphen. For more examples, see <a href="https://docs.databricks.com/administration-guide/account-api/new-workspace.html#step-5-create-the-workspace" class="bare">https://docs.databricks.com/administration-guide/account-api/new-workspace.html#step-5-create-the-workspace</a>. This value must be unique across all non-deleted deployments across all AWS regions.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS Region of the Databricks workspace
+(<code>AWSRegion</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS Region where the workspace will be created. Customer-managed keys to encrypt notebooks are not supported in Region us-west-1.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Are you creating this workspace in a HIPAA tier account?
+(<code>HIPAAparm</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>No</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Answering 'Yes' will create a cluster template you should use to create clusters in the HIPAA account</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. Required IAM role and S3 bucket configuration</caption>
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 11%;">
+<col style="width: 73%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter label (name)</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IAM role tag value
+(<code>TagValue</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>databricks-quickstart-cloud-formation</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enter a tag value to identify the IAM role created by this template. See <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html" class="bare">https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cross-account IAM role name
+(<code>IAMRole</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify a unique cross-account IAM role name. This name must not already exist. For naming rules, see <a href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html" class="bare">https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Root S3 bucket name
+(<code>BucketName</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Requires input</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of your new S3 root bucket. Use only alphanumeric characters. For naming rules, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html" class="bare">https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. (Optional) Customer-managed-key configuration for notebooks—requires the Enterprise tier</caption>
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 11%;">
+<col style="width: 73%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter label (name)</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ARN for customer-managed AWS KMS key
+(<code>KeyArn</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) AWS KMS key ARN to encrypt and decrypt the workspace notebooks in the control plane. Set only if using the feature customer-managed key for notebooks. See <a href="https://docs.databricks.com/security/keys/customer-managed-keys-notebook-aws.html" class="bare">https://docs.databricks.com/security/keys/customer-managed-keys-notebook-aws.html</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alias name for customer-managed AWS KMS key
+(<code>KeyAlias</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) AWS KMS key alias. Keep blank if you didn&#8217;t specify a key ARN.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS Region for customer-managed AWS KMS key
+(<code>KeyRegion</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) AWS Region of your AWS KMS key. Keep blank if you didn&#8217;t specify a key ARN.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 9. (Optional) Customer-managed VPC configuration—requires the Premium tier</caption>
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 11%;">
+<col style="width: 73%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter label (name)</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VPC ID
+(<code>VPCID</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) ID for your VPC in which to create the new workspace. Set only if using the customer-managed VPC feature. The format is vpc-xxxxxxxxxxxxxxxx. If unspecified, Databricks creates the new workspace in a new VPC that Databricks creates. See <a href="https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html" class="bare">https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private-subnet IDs
+(<code>SubnetIDs</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) At least two private-subnet IDs in your VPC, separated by commas. These subnets cannot be shared with other workspaces nor any other non-Databricks resources. Each subnet must have a netmask between /17 and /25. Subnets must be private. Subnets must have outbound access to the public network using a NAT gateway and internet gateway or similar customer-managed appliance infrastructure. The NAT gateway must be set up in its own subnet that routes quad-zero (0.0.0.0/0) traffic to an internet gateway or similar customer-managed appliance infrastructure.  Keep blank if you didn&#8217;t specify VPCID. See <a href="https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html" class="bare">https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Security-group IDs
+(<code>SecurityGroupIDs</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><strong><em>Blank string</em></strong></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) Names of one or more security groups in your VPC. The format is sg-xxxxxxxxxxxxxxxxx. To provide multiple IDs, separate with commas. Databricks must have access to at least one security group and no more than five security groups. You can reuse existing security groups rather than create new ones. Keep blank if you didn&#8217;t specify VPCID. See <a href="https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html" class="bare">https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html</a>.</p></td>
 </tr>
 </tbody>
 </table>
