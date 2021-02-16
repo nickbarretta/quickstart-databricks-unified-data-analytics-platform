@@ -965,7 +965,7 @@ Amazon may share user-deployment information with the AWS Partner that collabora
 <div class="sect2">
 <h3 id="_s3_bucket_in_the_customer_account">S3 bucket in the customer account</h3>
 <div class="paragraph">
-<p>During workspace creation, an Amazon Simple Storage Service (Amazon S3) bucket is created in the customer account with default encryption enabled. It provides Databricks access to the managed S3 bucket with a cross-account AWS Identity and Access Management (IAM) role. IAM roles allow customers to access data from Databricks clusters without having to embed AWS keys in notebooks.</p>
+<p>During workspace creation, an Amazon Simple Storage Service (Amazon S3) bucket is created in the customer account with default encryption and bucket versioning enabled, blocked all public access and with a life cycle management rule to permanently delete older versions after five days.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -987,22 +987,6 @@ The customer is responsible for backing up, securing access to, and encrypting c
 <li>
 <p><strong>Databricks-managed directories.</strong> These directories are inaccessible to customers using Databricks File System (DBFS). Some data—for example, Spark driver log initial storage and job output—is stored or read by Databricks in hidden directories. This data cannot be accessed directly by customer notebooks at a DBFS path or through the AWS admin interface.</p>
 </li>
-</ul>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Databricks strongly recommends that you enable bucket versioning. Versioning allows you to restore earlier versions of files in the bucket if files are accidentally modified or deleted. For enabling bucket versioning, refer to the <a href="https://docs.databricks.com/administration-guide/account-settings/aws-storage.html#step-2b-enable-bucket-versioning" target="_blank" rel="noopener">Databricks documentation</a>.
-</td>
-</tr>
-</table>
-</div>
-<div class="ulist">
-<ul>
 <li>
 <p><strong>DBFS root storage.</strong> This is accessible to customers using DBFS. Other areas of storage can be accessed by customer notebooks at a DBFS path. For example, the FileStore area of DBFS root storage is where uploaded data files and code libraries are stored when imported using the web application. Other DBFS paths are available for customer usage.</p>
 </li>
