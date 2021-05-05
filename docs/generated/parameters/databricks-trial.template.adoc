@@ -1,0 +1,18 @@
+
+.Workspace configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default value|Description|Databricks account ID
+(`AccountId`)|`aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee`|You can find your account ID at https://accounts.cloud.databricks.com|Databricks account email address
+(`Username`)|`**__Requires input__**`|Your case-sensitive Databricks account email address.|Databricks account password
+(`Password`)|`**__Requires input__**`|This is the password you set for your Databricks account.|Workspace name
+(`WorkspaceName`)|`**__Requires input__**`|Human-readable name for this workspace.|AWS Region of the Databricks workspace
+(`AWSRegion`)|`**__Requires input__**`|AWS Region where the workspace will be created.
+|===
+.Required IAM role and S3 bucket configuration
+[width="100%",cols="16%,11%,73%",options="header",]
+|===
+|Parameter label (name) |Default value|Description|Cross-account IAM role name
+(`IAMRole`)|`**__Requires input__**`|Specify a unique cross-account IAM role name. For naming rules, see https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html.|Root S3 bucket name
+(`BucketName`)|`**__Requires input__**`|Specify a unique name for the S3 bucket where Databricks will store metadata for your workspace. Use only alphanumeric characters. For naming rules, see https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html.
+|===
