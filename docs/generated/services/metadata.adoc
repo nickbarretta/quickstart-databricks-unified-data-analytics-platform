@@ -15,8 +15,10 @@
 :template_custom_createnetworks:
 :template_custom_createstorageconfigurations:
 :template_custom_createworkspace:
+:template_custom_updatecustommanagedkeys:
 :template_custom_updateroleassumepolicy:
 :template_iam:
 :template_lambda:
 :template_s3:
+:template_updatecustommanagedkeys:
 :template_updateroleassumepolicy:

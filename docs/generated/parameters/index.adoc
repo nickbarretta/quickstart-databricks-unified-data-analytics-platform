@@ -5,8 +5,8 @@ include::databricks-trial.template.adoc[]
 === Parameters for deploying a workspace and creating a new cross-account IAM role
 include::databricks-multi-workspace.template.adoc[]
 
-=== Parameters for deploying a workspace and using an existing cross-account IAM role
-include::databricks-multi-workspace-withoutIAM.template.adoc[]
-
 === Parameters for deploying an OEM workspace and creating a new cross-account IAM role
 include::databricks-multi-workspace-oem.template.adoc[]
+
+=== Parameters for deploying a workspace and using an existing cross-account IAM role
+include::databricks-multi-workspace-withoutIAM.template.adoc[]

@@ -32,8 +32,9 @@
 |===
 |Parameter label (name) |Default value|Description|ARN for customer-managed AWS KMS key
 (`KeyArn`)|`**__Blank string__**`|AWS KMS key ARN to encrypt and decrypt the workspace notebooks in the control plane. Set only if using the feature customer-managed key for notebooks. See https://docs.databricks.com/security/keys/customer-managed-keys-notebook-aws.html.|Alias name for customer-managed AWS KMS key
-(`KeyAlias`)|`**__Blank string__**`|AWS KMS key alias. Specify only if you have set a key ARN. Otherwise, keep blank.|AWS Region for customer-managed AWS KMS key
-(`KeyRegion`)|`**__Blank string__**`|AWS Region of your AWS KMS key. Specify only if you have set a key ARN. Otherwise, keep blank.
+(`KeyAlias`)|`**__Blank string__**`|(Optional) AWS KMS key alias.|The use case for which to use the key
+(`KeyUseCases`)|`**__Requires input__**`|Enter MANAGED_SERVICES, STORAGE or BOTH to configure customer-managed encryptioon keys. Refer to https://docs.databricks.com/administration-guide/account-api/new-workspace.html#step-5-configure-customer-managed-keys-optional for details|Encrypt cluster EBS volumes
+(`KeyReuseForClusterVolumes`)|`**__Requires input__**`|True or False. Set ONLY if the use case is set to STORAGE or BOTH
 |===
 .Quick Start configuration
 [width="100%",cols="16%,11%,73%",options="header",]
