@@ -1349,7 +1349,7 @@ Certain Regions are available on an opt-in basis. For more information, see <a h
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-Select Option 1 if you have the privilege to create an IAM role in your account, otherwise select option 2 which requires the setup of IAM roles prior to launch the deployment.
+Select option 1 if you have the privilege to create an IAM role in your account, otherwise select option 2. Note that option 2 requires you to configure IAM roles prior to launching the deployment.
 </td>
 </tr>
 </table>
@@ -1360,14 +1360,14 @@ Select Option 1 if you have the privilege to create an IAM role in your account,
 <p>Deploy a Databricks workspace and create a <strong>new</strong> cross-account IAM role. You must have sufficient permissions to create a new IAM role.</p>
 </li>
 <li>
-<p>Deploy a Databricks workspace and use an <strong>existing</strong> cross-account IAM role. You can create an appropriate role and policy for your deployment type by following these <a href="https://docs.databricks.com/administration-guide/account-api/iam-role.html">steps</a>. For this deployment option, you will need to create an additional IAM role with the follwoing permissions:</p>
+<p>Deploy a Databricks workspace and use an <strong>existing</strong> cross-account IAM role. You can create an appropriate role and policy for your deployment type by following these <a href="https://docs.databricks.com/administration-guide/account-api/iam-role.html">steps</a>. For this deployment option, create an additional IAM role with the following permissions:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>embed the <strong>AWSLambdaBasicExecutionRole</strong> policy</p>
+<p>Embed the <strong>AWSLambdaBasicExecutionRole</strong> policy.</p>
 </li>
 <li>
-<p>Inline policy to access to the QuickStart S3 location</p>
+<p>Configure the inline policy to access to the Quick Start S3 location:</p>
 </li>
 </ol>
 </div>
@@ -1391,9 +1391,9 @@ Select Option 1 if you have the privilege to create an IAM role in your account,
 </div>
 </div>
 <div class="olist arabic">
-<ol class="arabic">
+<ol class="arabic" start="3">
 <li>
-<p>Inline policy allowing to  manage the necessary S3 buckets</p>
+<p>Configure the inline policy to allow for managing the S3 buckets:</p>
 </li>
 </ol>
 </div>
@@ -1414,9 +1414,9 @@ Select Option 1 if you have the privilege to create an IAM role in your account,
 </div>
 </div>
 <div class="olist arabic">
-<ol class="arabic">
+<ol class="arabic" start="4">
 <li>
-<p>Inline KMS permissions, if you the select the optional Customer Managed Key feature.</p>
+<p>If you the choose the optional customer-managed key feature, configure inline KMS permissions:</p>
 </li>
 </ol>
 </div>
@@ -2339,7 +2339,7 @@ and to share your customizations with others.</p>
 </html>
 <!--
 repo commit:
-08ad11256e59a3a1d4f313dd88ff53743267c869
+8a66e00aabce89b26e5aa9fb57e6998ba33e1f6d
 
 submodule config:
 +81ea0b675a571b662377f9de556a26cce8dad05f docs/boilerplate (heads/main)
